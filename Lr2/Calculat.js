@@ -8,16 +8,16 @@ const digit = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.'];
 const action = ['-', '+', 'X', '/', '+/-', '%'];
 
 //экран
-const out = document.querySelector('.calc-screen p')
+const out = document.querySelector('.calcul-screen p')
 
 
-// function changeResultColor() {
-//     const resultScreen = document.querySelector('.calc-screen p');
-//     const currentColor = resultScreen.style.backgroundColor;
+function changeResultColor() {
+    const resultScreen = document.querySelector('.calcul-screen p');
+    const currentColor = resultScreen.style.backgroundColor;
 
-//     // Измените цвет на другой по вашему выбору
-//     resultScreen.style.backgroundColor = currentColor === 'gray' ? 'purple' : 'gray';
-// }
+    // Измените цвет на другой по вашему выбору
+    resultScreen.style.backgroundColor = currentColor === 'gray' ? 'purple' : 'gray';
+}
 
 
 function clearAll() {
@@ -35,9 +35,9 @@ function factorial(u) {
     }
 }
 
-// document.querySelector('.change-color-btn').onclick = changeResultColor;
+document.querySelector('.change-color-btn').onclick = changeResultColor;
 document.querySelector('.ac').onclick = clearAll;
-document.querySelector('.buttons').onclick = (event) => {
+document.querySelector('.but').onclick = (event) => {
     // нажата не кнопка
     if (!event.target.classList.contains('btn')) return;
     // нажата кнопка clearAll ac
@@ -109,21 +109,21 @@ document.querySelector('.buttons').onclick = (event) => {
         }
         return;
 
-        
+        document.querySelector('.backspase').onclick = backspase;
     }
     // нажата кнопка x²
     if (key === 'x²') {
         if (a !== '' && b === '') {
             a = Math.pow(parseFloat(a), 2);
-            out.textContent = a.toFixed(8);
+            out.textContent = a;
         }
         return;
     }
     // нажата кнопка x!
-    if (key === '!') {
+    if (key === 'x!') {
         if (a !== '' && b === '') {
             a = factorial(parseInt(a));
-            out.textContent = a.toFixed(2);
+            out.textContent = a;
         }
         return;
     }
@@ -163,20 +163,20 @@ document.querySelector('.buttons').onclick = (event) => {
             case "+/-":
                 if (a !== '') {
                     a = String(-a);
-                    out.textContent = a.toFixed(8);
+                    out.textContent = a;
                 } else {
                     b = String(-b);
-                    out.textContent = b.toFixed(8);
+                    out.textContent = b;
                 }
                 break;
 
             case "%":
                 if (b !== '') {
                     a = String(parseFloat(b) * (parseFloat(a) / 100));
-                    out.textContent = a.toFixed(8);
+                    out.textContent = a;
                 } else {
                     a = String(parseFloat(a) / 100);
-                    out.textContent = a.toFixed(8);
+                    out.textContent = a;
                 }
                 break;
 
@@ -196,7 +196,7 @@ function darkmode() {
     body.classList.toggle('dark-mode', !wasDarkmode)
 }
 
-document.querySelector('.nt').addEventListener('click', darkmode)
+document.querySelector('.nthem').addEventListener('click', darkmode)
 
 function onload() {
     document.body.classList.toggle('dark-mode', localStorage.getItem('darkmode') === 'true')
