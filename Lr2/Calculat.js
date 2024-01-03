@@ -16,7 +16,7 @@ function changeResultColor() {
     const currentColor = resultScreen.style.backgroundColor;
 
     // Измените цвет на другой по вашему выбору
-    resultScreen.style.backgroundColor = currentColor === 'gray' ? 'purple' : 'gray';
+    resultScreen.style.backgroundColor = currentColor === 'green' ? 'blue' : 'green';
 }
 
 
